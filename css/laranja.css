@@ -1,0 +1,202 @@
+:root {
+  --primary: #;
+  --secondary: #;
+
+  --title: #;
+  --title-hover: #;
+
+  --sidebar-text: #;
+  --sidebar-text-hover: #;
+
+  --footer-text: #;
+  --footer-link: #;
+  --footer-link-hover: #;
+}
+
+.botao > a {
+  padding-top: 0.75rem;
+  height: 2.5rem;
+}
+
+.nav-wrapper {
+    background-color: var(--primary);
+}
+
+.nav-content{
+    background-color: var(--secondary);
+}
+
+.feature-post {
+    color: var(--title);
+}
+
+.feature-post:hover {
+    color: var(--title-hover);
+}
+
+/*todos os links do corpo*/
+.body-link{
+    color: var(--sidebar-text);
+}
+.body-link:hover{
+    color: var(--sidebar-text-hover);   
+}
+
+.body-link>a{
+    color: var(--sidebar-text);
+}
+.body-link>a:hover{
+    color: var(--sidebar-text-hover);   
+}
+
+.entry-title >a {
+    color: var(--title);
+}
+.entry-title >a:hover{
+    color: var(--title-hover);
+}
+
+.sidebar-area>h5 {
+    color: var(--sidebar-text);
+}
+.sidebar-area>div>ul>li>a{
+    color: var(--sidebar-text);   
+}
+.sidebar-area>div>ul>li>a:hover{
+    color: var(--sidebar-text-hover);   
+}
+
+/*Begin footer area*/
+#footer{
+    background-color: var(--primary);
+}
+#footer > .footer-copyright {
+    background-color: var(--secondary);
+}
+
+.footer-text {
+    color: var(--footer-text);
+}
+
+.footer-area >ul>li>a {
+    color: var(--footer-link);
+}
+
+.footer-area >ul>li>a:hover {
+    color: var(--footer-link-hover);
+}
+/*End footer area*/
+
+/*Slides*/
+
+.slides {
+    background-color: white !important;
+}
+
+.slider .indicators .indicator-item.active {
+    background-color: var(--secondary) !important;
+}
+#slide-img {
+  -webkit-filter: opacity(45%);
+  filter: opacity(45%) !important;
+}
+
+.slide-title {
+  color: var(--secondary);
+}
+.slide-autor {
+  color: var(--secondary);
+}
+/*mobile menu*/
+.mobile-title{
+  color: var(--primary);
+}
+
+/*paginator*/
+.pagination li a {
+  color: var(--secondary);
+}
+.pagination-active {
+    background-color: var(--primary) !important;
+}
+
+.paginador-number:hover{
+  color: #eee !important;
+}
+
+.btn-navigation {
+  color: #eee !important;
+  background-color: var(--secondary) !important;
+}
+
+/* Underline From Center */
+.hvr-underline-from-center {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  overflow: hidden;
+}
+.hvr-underline-from-center:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  background: var(--primary);
+  height: 2px;
+  -webkit-transition-property: left, right;
+  transition-property: left, right;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
+  left: 0;
+  right: 0;
+}
+
+/*Sweep to top*/
+.hvr-sweep-to-top {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.hvr-sweep-to-top:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--primary);
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-sweep-to-top:hover, .hvr-sweep-to-top:focus, .hvr-sweep-to-top:active {
+  color: white;
+}
+.hvr-sweep-to-top:hover:before, .hvr-sweep-to-top:focus:before, .hvr-sweep-to-top:active:before {
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+}

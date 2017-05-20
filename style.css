@@ -1,0 +1,98 @@
+/*
+Theme Name: Materialize CSS
+Theme URI: https://yurisbv.tk/materialize
+Author: Yuri Brandão
+Author URI: https://yurisbv.tk
+Description: Theme on Material Google Design, powered by Materialize framework.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: materialize_css
+Tags: Material, Materialize, Materialize CSS
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+materialize css is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Typography
+# Elements
+# Forms
+# Navigation
+	## Links
+	## Menus
+# Accessibility
+# Alignments
+# Clearings
+# Widgets
+# Content
+	## Posts and pages
+	## Comments
+# Infinite scroll
+# Media
+	## Captions
+	## Galleries
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+/* rodape fixo embaixo*/
+body {
+display: flex;
+min-height: 100vh;
+flex-direction: column;
+}
+
+main {
+flex: 1 0 auto;
+}  
+
+/*Corrigir botão mobile*/
+#sidenav-overlay {
+	z-index: 996;
+}
+
+nav .nav-wrapper{
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+
+nav .nav-content{
+	height: 2.5rem;
+	padding-left: 0.5rem;
+}
+
+.botao > a{
+	padding-top: 0.75rem;
+	height: 2.5rem;
+}
+
+nav .nav-logo {
+	height: 3rem;
+}
+
+#content {
+	width: 90%;
+	padding-top: 2rem;
+}
+
+.divider{
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.widget-card li {
+	text-align: center; 	
+}
+
+
