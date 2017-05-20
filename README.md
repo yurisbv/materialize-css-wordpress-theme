@@ -1,7 +1,7 @@
 Materialize CSS - Wordpress Theme
 ===================================
 ## This theme is under GPL V 3.0 - Please contribute!
-### Idealized by [yurisv](https://wwww.yurisbv.com.br)
+### Idealized by [yurisv](https://www.yurisbv.com.br)
 
 ---------------------------------------------
 Theme information
