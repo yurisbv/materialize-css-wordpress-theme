@@ -21,7 +21,7 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<header id="masthead" class="site-header" role="banner">
+	<header id="masthead" class="site-header" style="margin-bottom: 2rem;" role="banner">
 		    <nav class="nav-extended">
 		        <div class="nav-wrapper">		        	
 				    <a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand-logo center">
@@ -55,6 +55,6 @@
 					<?php wp_nav_menu( array('theme_location' => 'primary')); ?>
 		        </ul>
 		      </div>
-		    </nav>
+		    </nav>		
 	</header><!-- #masthead -->
-	<div id="content" class="row">
+	

@@ -108,8 +108,8 @@ function materialize_css_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'materialize-css' ),
 		'before_widget' => '<div class="sidebar-area"><div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div></div>',
-		'before_title'  => '<div class="divider"></div><h5 class="sidebar-text center">',
-		'after_title'   => '</h5>',
+		'before_title'  => '<p class="sidebar-text flow-text center">',
+		'after_title'   => '</p>',
 	));
 	register_sidebar(array(
 		'name' => 'Footer Left',
@@ -136,16 +136,16 @@ add_action( 'widgets_init', 'materialize_css_widgets_init' );
 function materialize_css_scripts() {
 	if( !is_admin()){	 
 	 	wp_deregister_script('jquery');
-	 	wp_enqueue_script( 'materialize-css-jquery', 'https://code.jquery.com/jquery-2.1.1.min.js', '', null, true );
+	 	wp_enqueue_script( 'materialize-css-jquery', 'https://code.jquery.com/jquery-3.2.1.min.js', '', null, true );
 	}
 	$themecolors = get_theme_mod('materialize_colors');
 	wp_enqueue_style('material-colors', get_template_directory_uri() . '/css/'. $themecolors);
 
-	 wp_enqueue_style('materialize_css-style', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css', '', null, false);
+	 wp_enqueue_style('materialize_css-style', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.0/css/materialize.min.css', '', null, false);
 	
 	wp_enqueue_style('style', get_stylesheet_uri() );
 	 
-	wp_enqueue_script('materialize_css_scripts', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js', '', null, true);
+	wp_enqueue_script('materialize_css_scripts', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.0/js/materialize.min.js', '', null, true);
 
 	wp_enqueue_script('materialize_css-scripts', get_template_directory_uri() . '/js/custom.js', array(), '1.0', true);
 
@@ -219,23 +219,86 @@ function materialize_controls($wp_customize)
 }
 add_action('customize_register', 'materialize_controls');
 
-/*Materialize Paginador*/
-// function materialize_pagination() {
-// 	global $wp_query;
-// 	$big = 999999999;
+//Criar meus Widgets aqui
 
-// 	echo '<ul class="pagination">'.
-// 		paginate_links(array(
-// 			'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-// 			'format' => '?paged=%#%',
-// 			'current' => max(1, get_query_var('paged')),
-// 			'total' => $wp_query->max_num_pages,
-// 			'prev_text' => '<li class="waves-effect paginator-icon"><i class="material-icons">chevron_left</i></li>',
-// 			'next_text' => '<li class="waves-effect paginator-icon"><i class="material-icons">chevron_right</i></li>',
-// 			'add_fragment' => '',
-// 			'before_page_number' => '<li class="waves-effect paginador-number">',
-// 			'after_page_number'  => '</li>'
-// 		)).
-// 		'</ul>';
-//       }
-/*Fim do paginador*/
+// Creating the widget 
+class principal_widget extends WP_Widget
+{
+	function __construct()
+	{
+	parent::__construct(
+		// Base ID of your widget
+		'principal_widget', 
+		// Widget name will appear in UI
+		__('Tópico Principal Widget', 'principal_widget_domain'), 
+		// Widget description
+		array(
+			'description' => __( 'Post Principal Em destaque', 
+			'principal_widget_domain' ))
+		);
+	}
+	// Creating widget front-end
+	// This is where the action happens
+	public function widget( $args, $instance )
+	{
+		$title = apply_filters( 'widget_title', $instance['title'] );
+		// before and after widget arguments are defined by themes
+		echo $args['before_widget'];
+		if ( ! empty( $title ) )
+		echo $args['before_title'] . $title . $args['after_title'];
+		// This is where you run the code and display the output
+		echo __( 'Hello, World!', 'principal_widget_domain' );
+		echo $args['after_widget'];
+	}
+		
+// Widget Backend 
+	public function form( $instance )
+	{
+		if (isset($instance['title']))
+		{
+			$title = $instance[ 'title' ];
+		}
+		else
+		{
+			$title = __( 'New title', 'principal_widget_domain' );
+		}
+		// Widget admin form
+?>
+	<p>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); 
+		?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" 
+		value="<?php echo esc_attr( $title ); ?>" />
+	</p>
+<?php 
+	}
+	
+	// Updating widget replacing old instances with new
+	public function update( $new_instance, $old_instance )
+	{
+		$instance = array();
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) 
+		? strip_tags( $new_instance['title'] ) : '';
+		return $instance;
+	}
+	} // Class principal_widget ends here
+
+	// Register and load the widget
+	function principal_load_widget()
+	{
+		register_widget( 'principal_widget' );
+	}
+add_action( 'widgets_init', 'principal_load_widget' );
+
+#string $caterigas
+function card_category()
+{
+	$categorias_array = get_the_category();
+	foreach ($categorias_array as $categoria):					
+			echo '<a href="'.
+				esc_url( get_category_link($categoria->term_id)).
+				'">'.
+				esc_html( $categoria->name).
+				'</a>';
+	endforeach;
+}

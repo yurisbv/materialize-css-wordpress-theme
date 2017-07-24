@@ -6,43 +6,48 @@
  *
  * @package materialize_css
  */
-
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+  
+    <?php
+    if (is_single()):
+      the_title('<h3 class="entry-title">', '</h3>');
+    else: ?>
+	<div class="col s12 m7 l6">
+	<div class="card z-depth-4">
 	<header class="entry-header">
-		<?php
-		if ( is_single() ) :
-			the_title( '<h3 class="entry-title hvr-underline-from-center">', '</h3>' );
-		else :
-			the_title( '<h3 class="entry-title hvr-underline-from-center"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
-		endif;
-
-		if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php materialize_css_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php
-		endif; ?>
-	</header><!-- .entry-header -->
-
-	<div class="flow-text">
-		<?php
-			the_content( sprintf(
-				/* translators: %s: Name of current post.   %s <span class="meta-nav">&rarr;</span>*/
-				wp_kses( __( '<br>Continue lendo...', 'materialize-css' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
-		
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'materialize-css' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php materialize_css_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-<div class="divider"></div>
-</article><!-- #post-## -->
+	<div class="card-image">
+    	<?php esc_url( the_post_thumbnail(array(450,400)));?>
+    	<span class="card-title"><?php card_category(); ?></span>
+   	</div>
+    <?php endif;?>
+	</header>	
+	<div class="card-content">
+	<?php if (is_single()): 
+			the_content(); 
+		else: ?>
+				<a href="<?php the_permalink();?>">
+					<?php the_title( '<p class="card-title-text">', '</p>' );?>
+				</a>
+		    	<?php if ( 'post' === get_post_type()): ?>
+		       		<div class="entry-meta">
+		    		<?php materialize_css_posted_on(); ?>
+		    		</div>
+	    		<?php endif; ?>
+	    <?php endif; ?>
+	  <div class="card-action">
+	    <?php
+	      if (has_excerpt()):
+	      	the_excerpt();
+	      else:
+		    	the_content();
+	      endif;
+	      wp_link_pages( array(
+	        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'materialize-css' ),
+	        'after'  => '</div>',
+	      ));
+	    ?>
+	  </div>
+	</div>
+</article>

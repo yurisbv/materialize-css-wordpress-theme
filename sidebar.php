@@ -7,13 +7,12 @@
  * @package materialize_css
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+if ( ! is_active_sidebar('sidebar-1')) {
 	return;
 }
 ?>
-
 <aside id="secondary" role="complementary">
-	<div id="sidebar-right" class="col s12 m2 l2">
+	<div id="sidebar-right" class="col s12 m2 l2 z-depth-1">
 		<?php dynamic_sidebar('sidebar-1'); ?>
 	</div>
-</aside><!-- #secondary -->
+</aside>

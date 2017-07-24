@@ -82,17 +82,31 @@ nav .nav-logo {
 }
 
 #content {
-	width: 90%;
 	padding-top: 2rem;
-}
-
-.divider{
-	margin-top: 1rem;
-	margin-bottom: 1rem;
 }
 
 .widget-card li {
 	text-align: center; 	
 }
 
+/*Sidebar*/
+#sidebar-right{
+	margin-top: 2rem;
+}
 
+.card-image > img {	
+	border-bottom: 0.1rem solid var(--primary);
+	border-top: 0.5rem solid var(--secondary);	
+}
+
+.card-title {
+	font-size: 1rem !important;
+	padding: .5rem !important;
+	margin-left: -0.3rem !important;
+	background-color: var(--primary);
+}
+.card-title-text{
+	color: var(--primary);
+	font-size: 2rem;
+	padding-bottom: .5rem;
+}
